@@ -1,0 +1,62 @@
+[
+  {
+    "id": "Q01",
+    "type": "directly_answerable",
+    "question": "What encryption protocols and algorithms are used for data at rest and in transit in Apex systems?",
+    "expected_behavior": "Must cite AES-256 for data at rest and TLS 1.3 for data in transit using source doc4 markers."
+  },
+  {
+    "id": "Q02",
+    "type": "directly_answerable",
+    "question": "What is Apex's target year to achieve Net-Zero carbon emissions and what is the 2030 target for Scope 1 & 2 emissions?",
+    "expected_behavior": "Must cite 2040 for Net-Zero and 60% reduction for Scope 1 & 2 emissions by 2030 from doc3."
+  },
+  {
+    "id": "Q03",
+    "type": "directly_answerable",
+    "question": "How much did Apex invest in Research & Development (R&D) during Q3, and what were the primary focus areas?",
+    "expected_behavior": "Must cite $45 million investment focusing on generative AI integration and high-throughput vector index algorithms from doc1."
+  },
+  {
+    "id": "Q04",
+    "type": "partially_answerable",
+    "question": "What are Apex's reduction targets for Scope 1, Scope 2, and Scope 3 supply chain greenhouse gas emissions?",
+    "expected_behavior": "Must answer Scope 1 & 2 targets (60% by 2030) with citations, but explicitly state that Scope 3 metrics have not been finalized or published."
+  },
+  {
+    "id": "Q05",
+    "type": "partially_answerable",
+    "question": "What was Apex's total Q3 revenue and how much was spent on marketing and sales campaigns?",
+    "expected_behavior": "Must state Q3 revenue ($1.42B / 8.5%-12% YoY) with citations, but state explicitly that marketing/sales campaign spend is not provided in sources."
+  },
+  {
+    "id": "Q06",
+    "type": "not_answerable",
+    "question": "What is the annual base salary and bonus structure of Apex's Chief Executive Officer (CEO)?",
+    "expected_behavior": "Must refuse to answer from pretrained memory and explicitly state the provided sources do not address CEO compensation."
+  },
+  {
+    "id": "Q07",
+    "type": "not_answerable",
+    "question": "Where are Apex's corporate office and data center locations situated in Japan?",
+    "expected_behavior": "Must explicitly state that sources do not address facilities in Japan (or note that doc1 states Apex operates no facilities in Japan)."
+  },
+  {
+    "id": "Q08",
+    "type": "not_answerable",
+    "question": "What is Apex's quarterly stock dividend payout per share for Q4?",
+    "expected_behavior": "Must state explicitly that the provided sources do not contain information regarding stock dividend payouts."
+  },
+  {
+    "id": "Q09",
+    "type": "conflicting_sources",
+    "question": "What was Apex Global Technologies' Year-over-Year (YoY) revenue growth rate in Q3?",
+    "expected_behavior": "Must report the conflict between doc1 (claiming 12% YoY growth) and doc2 (claiming 8.5% YoY growth due to ASC 606 revenue recognition adjustments) and cite both S1 and S2."
+  },
+  {
+    "id": "Q10",
+    "type": "conflicting_sources",
+    "question": "What is Apex's market share in the enterprise cloud market and how does its R&D spending compare to industry norms?",
+    "expected_behavior": "Must cite doc2 figures (14.2% market share, 3.17% of revenue spent on R&D below industry average of 5.8%) while contrasting with doc1's performance narrative."
+  }
+]

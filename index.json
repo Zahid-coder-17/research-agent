@@ -1,0 +1,68 @@
+{
+  "chunks": [
+    {
+      "doc_id": "S1",
+      "chunk_id": "00",
+      "tag": "[S1:00]",
+      "doc_title": "doc1_company_q3_report.md",
+      "chunk_text": "# Apex Global Technologies - Q3 Financial & Operational Report\n\n## Executive Summary\nApex Global Technologies reported strong performance across all business segments in Q3. Total revenue reached $1.42 billion, representing a 12% Year-over-Year (YoY) growth compared to Q3 of the previous fiscal year. Growth was primarily propelled by the Enterprise Cloud Infrastructure unit, which experienced a 28% surge in demand. ## Financial Performance Breakdown\n- Total Q3 Revenue: $1.42 Billion (12% YoY increase)\n- Research & Development (R&D) Expenditure: Apex invested $45 million into R&D during Q3, focusing heavily on generative AI integration and high-throughput vector index algorithms. - Operating Margin: 21.5%, up 120 basis points YoY. - Cash Reserves: $620 million in liquid cash equivalents at the close of Q3. ## Regional Growth & Expansion\nNorth American operations contributed $850 million to total Q3 revenue. European markets accounted for $370 million, while Asia-Pacific generated $200 million. In Q3, Apex established a new cloud data hub in Frankfurt, Germany to comply with local data sovereignty mandates. However, Apex currently operates no data centers or corporate facilities in Japan or South Korea. ## Future Outlook\nApex management projects Q4 revenue between $1.48 billion and $1.52 billion. Full-year R&D allocation is projected to reach $180 million.",
+      "word_count": 205
+    },
+    {
+      "doc_id": "S2",
+      "chunk_id": "00",
+      "tag": "[S2:00]",
+      "doc_title": "doc2_market_analysis.md",
+      "chunk_text": "# Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n\n## Market Overview\nThe Q3 enterprise technology sector demonstrated steady recovery. Independent analysis of corporate disclosures indicates varying performance across cloud providers. ## Apex Global Technologies Analysis\nIndependent audit figures published by TechMarket Insights conflict with company-issued PR statements regarding Apex Global Technologies:\n- Revenue Growth Discrepancy: While internal company reports claim a 12% YoY increase, independent market audits using adjusted ASC 606 standards calculate Apex's true Q3 YoY revenue growth at 8.5%, noting that $42 million in deferred subscription revenue was prematurely recognized. - Enterprise Cloud Market Share: Apex's market share in Enterprise Cloud Infrastructure stands at 14.2% as of Q3, trailing key competitors Zenith Corp (31.0%) and CloudMatrix (22.5%). - R&D Comparison: Apex's $45 million Q3 R&D spend represents 3.17% of total revenue, which is below the industry peer average of 5.8%. ## Industry Regulatory Trends\nRegulatory bodies in the European Union have tightened rules regarding subscription accounting. Companies failing compliance face audits starting Q1 of next year.",
+      "word_count": 170
+    },
+    {
+      "doc_id": "S3",
+      "chunk_id": "00",
+      "tag": "[S3:00]",
+      "doc_title": "doc3_sustainability_policy.md",
+      "chunk_text": "# Corporate Environmental & Sustainability Strategy (2025-2035)\n\n## Sustainability Commitments\nApex Global Technologies is committed to minimizing its ecological footprint through structured carbon reduction initiatives. ## Targets & Timelines\n- Scope 1 & 2 Emissions: Apex targets a 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the year 2030, compared to a 2020 baseline. - Net-Zero Operations: Apex commits to achieving complete Net-Zero carbon emissions across all direct operations by the target year 2040. - Renewable Energy Procurement: By 2028, 100% of electricity utilized by Apex data centers will be sourced from verified wind and solar power purchase agreements (PPAs). ## Waste & Resource Management\nAll hardware decommissioned from Apex data hubs undergoes certified hardware recycling. Single-use plastics have been eliminated from all corporate headquarters as of Q2. *(Note: Scope 3 supply chain emission accounting guidelines remain under internal review and metrics have not been finalized or published).*",
+      "word_count": 156
+    },
+    {
+      "doc_id": "S4",
+      "chunk_id": "00",
+      "tag": "[S4:00]",
+      "doc_title": "doc4_security_whitepaper.md",
+      "chunk_text": "# Apex Security Architecture & Compliance Whitepaper\n\n## Security Standards & Encryption\nApex Global Technologies implements end-to-end cryptographic defense across all customer and internal infrastructure:\n- Encryption at Rest: All persistent storage volumes, vector database indexes, and database backups are encrypted using AES-256 with customer-managed or KMS-managed keys. - Encryption in Transit: Transport Layer Security (TLS 1.3) is mandated for all external HTTP requests and intra-cluster communication. Lower TLS versions (1.0, 1.1, 1.2) are explicitly disabled. ## Access Control & Identity Management\nApex enforces a Zero-Trust network architecture. All internal microservices require mutual TLS (mTLS) authentication. Employee administrative access to production clusters requires hardware token Multi-Factor Authentication (MFA) and is governed by Just-In-Time (JIT) role elevation expiring after 4 hours. ## Compliance & Certification\n- SOC 2 Type II: Apex undergoes annual third-party SOC 2 Type II audits covering Security, Availability, and Confidentiality trust principles. - ISO/IEC 27001: Certified annually for information security management systems. - Vulnerability Management: Automated static (SAST) and dynamic (DAST) code scanning is integrated into all continuous integration pipelines. Penetration testing is conducted bi-annually by independent external security firms.",
+      "word_count": 183
+    }
+  ],
+  "embeddings": [
+    [
+      0.9414271712303162,
+      0.33721643686294556,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.9337801337242126,
+      0.3578472137451172,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.9337801337242126,
+      0.3578472137451172,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.7071067690849304,
+      0.7071067690849304,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "total_documents": 4,
+  "total_chunks": 4
+}
