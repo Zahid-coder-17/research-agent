@@ -4,36 +4,91 @@
       "doc_id": "S1",
       "chunk_id": "00",
       "tag": "[S1:00]",
-      "doc_title": "doc1_company_q3_report.md",
-      "chunk_text": "# Apex Global Technologies - Q3 Financial & Operational Report\n\n## Executive Summary\nApex Global Technologies reported strong performance across all business segments in Q3. Total revenue reached $1.42 billion, representing a 12% Year-over-Year (YoY) growth compared to Q3 of the previous fiscal year. Growth was primarily propelled by the Enterprise Cloud Infrastructure unit, which experienced a 28% surge in demand. ## Financial Performance Breakdown\n- Total Q3 Revenue: $1.42 Billion (12% YoY increase)\n- Research & Development (R&D) Expenditure: Apex invested $45 million into R&D during Q3, focusing heavily on generative AI integration and high-throughput vector index algorithms. - Operating Margin: 21.5%, up 120 basis points YoY. - Cash Reserves: $620 million in liquid cash equivalents at the close of Q3. ## Regional Growth & Expansion\nNorth American operations contributed $850 million to total Q3 revenue. European markets accounted for $370 million, while Asia-Pacific generated $200 million. In Q3, Apex established a new cloud data hub in Frankfurt, Germany to comply with local data sovereignty mandates. However, Apex currently operates no data centers or corporate facilities in Japan or South Korea. ## Future Outlook\nApex management projects Q4 revenue between $1.48 billion and $1.52 billion. Full-year R&D allocation is projected to reach $180 million.",
-      "word_count": 205
+      "doc_title": "doc10_competitor_landscape.md",
+      "chunk_text": "# Enterprise Cloud Infrastructure Competitor Analysis (2025)\n\n## Section 1: Competitive Positioning & Market Dynamics\nThe enterprise cloud market remains dominated by three major hyperscalers: AWS (31% market share), Microsoft Azure (23% market share), and Google Cloud (11% market share). Apex Global Technologies holds a 14.2% specialized market share focused on developer AI pipelines. ## Section 2: Egress Pricing & Cost Comparisons\nApex offers zero egress bandwidth fees for intra-cloud transfers, compared to standard $0.09/GB egress pricing on rival hyperscalers. This pricing structure provides a 35% overall cost advantage for high-bandwidth LLM training workloads.",
+      "word_count": 94
     },
     {
       "doc_id": "S2",
       "chunk_id": "00",
       "tag": "[S2:00]",
-      "doc_title": "doc2_market_analysis.md",
-      "chunk_text": "# Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n\n## Market Overview\nThe Q3 enterprise technology sector demonstrated steady recovery. Independent analysis of corporate disclosures indicates varying performance across cloud providers. ## Apex Global Technologies Analysis\nIndependent audit figures published by TechMarket Insights conflict with company-issued PR statements regarding Apex Global Technologies:\n- Revenue Growth Discrepancy: While internal company reports claim a 12% YoY increase, independent market audits using adjusted ASC 606 standards calculate Apex's true Q3 YoY revenue growth at 8.5%, noting that $42 million in deferred subscription revenue was prematurely recognized. - Enterprise Cloud Market Share: Apex's market share in Enterprise Cloud Infrastructure stands at 14.2% as of Q3, trailing key competitors Zenith Corp (31.0%) and CloudMatrix (22.5%). - R&D Comparison: Apex's $45 million Q3 R&D spend represents 3.17% of total revenue, which is below the industry peer average of 5.8%. ## Industry Regulatory Trends\nRegulatory bodies in the European Union have tightened rules regarding subscription accounting. Companies failing compliance face audits starting Q1 of next year.",
-      "word_count": 170
+      "doc_title": "doc1_company_q3_report.md",
+      "chunk_text": "# Apex Global Technologies - Q3 Comprehensive Financial & Operational Report\n\n## Section 1: Executive Summary & Highlights\nApex Global Technologies reported strong operational momentum across all core business segments in Q3. Total net revenue reached $1.42 billion, representing a 12% Year-over-Year (YoY) growth compared to Q3 of the previous fiscal year. Growth was primarily propelled by the Enterprise Cloud Infrastructure unit, which experienced a 28% surge in customer adoption and platform consumption. Operating margin expanded by 120 basis points YoY to reach 21.5%, demonstrating disciplined cost management alongside aggressive growth investments. ## Section 2: Financial Performance Breakdown & Segments\n- Enterprise Cloud Infrastructure: Generated $820 million in Q3, up 28% YoY. - Developer AI Services: Generated $380 million in Q3, representing a 15% YoY increase as enterprise customers expanded LLM deployment pipelines. - Professional Services & Advisory: Contributed $220 million in revenue. - Liquid Cash Reserves: Cash, cash equivalents, and short-term marketable securities totaled $620 million at the close of Q3. - Capital Expenditures (CapEx): CapEx for server hardware and optical interconnects totaled $110 million in Q3. ## Section 3: Research & Development Allocation\nApex invested $45 million into R&D during Q3, representing 3.17% of total quarterly revenue. R&D engineering teams focused heavily on two primary technology pillars:\n1. High-throughput hybrid vector retrieval algorithms using combined dense and sparse indexing. 2. Low-latency streaming inference pipelines for enterprise generative AI applications. Full-year R&D allocation is projected to reach $180 million by the end of Q4. ## Section 4: Global Data Hub Operations & Regional Footprint\nNorth American operations contributed $850 million to total Q3 revenue, remaining Apex's largest market. European operations generated $370 million, while Asia-Pacific contributed $200 million. In Q3, Apex commissioned a new flagship cloud data center in Frankfurt, Germany to support European Union data residency mandates. Apex currently operates no data centers, corporate offices, or server facilities in Japan or South Korea. Management projects Q4 total revenue between $1.48 billion and $1.52 billion.",
+      "word_count": 326
     },
     {
       "doc_id": "S3",
       "chunk_id": "00",
       "tag": "[S3:00]",
-      "doc_title": "doc3_sustainability_policy.md",
-      "chunk_text": "# Corporate Environmental & Sustainability Strategy (2025-2035)\n\n## Sustainability Commitments\nApex Global Technologies is committed to minimizing its ecological footprint through structured carbon reduction initiatives. ## Targets & Timelines\n- Scope 1 & 2 Emissions: Apex targets a 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the year 2030, compared to a 2020 baseline. - Net-Zero Operations: Apex commits to achieving complete Net-Zero carbon emissions across all direct operations by the target year 2040. - Renewable Energy Procurement: By 2028, 100% of electricity utilized by Apex data centers will be sourced from verified wind and solar power purchase agreements (PPAs). ## Waste & Resource Management\nAll hardware decommissioned from Apex data hubs undergoes certified hardware recycling. Single-use plastics have been eliminated from all corporate headquarters as of Q2. *(Note: Scope 3 supply chain emission accounting guidelines remain under internal review and metrics have not been finalized or published).*",
-      "word_count": 156
+      "doc_title": "doc2_market_analysis.md",
+      "chunk_text": "# Independent Industry Benchmark Analysis: Q3 Enterprise AI & Cloud Market\n\n## Section 1: Market Overview & Industry Dynamics\nThe Q3 enterprise technology sector demonstrated steady recovery following two quarters of macroeconomic tightening. Independent financial audits published by TechMarket Insights indicate significant variations between corporate marketing disclosures and audited financial realities across enterprise cloud vendors. ## Section 2: Apex Global Technologies Audit Discrepancy\nTechMarket Insights' independent accounting audit conflicts with company-issued PR statements regarding Apex Global Technologies:\n- Revenue Growth Discrepancy: While internal Apex company reports claim a 12% YoY increase, independent market audits using adjusted ASC 606 revenue recognition standards calculate Apex's true Q3 YoY revenue growth at 8.5%. The audit notes that $42 million in deferred multi-year subscription revenue was prematurely recognized in Q3. - Enterprise Cloud Market Share: Apex's market share in Enterprise Cloud Infrastructure stands at 14.2% as of Q3, trailing industry leaders Zenith Corp (31.0%) and CloudMatrix (22.5%). - R&D Spend Comparison: Apex's $45 million Q3 R&D spend represents 3.17% of total revenue, which remains below the peer group benchmark average of 5.8%. ## Section 3: Subscribed Customer Churn & Pricing Pressures\nAudits reveal that while Apex's new enterprise customer acquisitions grew by 18%, net dollar retention (NDR) dropped from 118% to 104% due to aggressive discounting offered on 3-year term commitments. Mid-tier enterprise customers reported migrating 12% of workloads to rival cloud platforms to reduce egress bandwidth fees. ## Section 4: European Regulatory Compliance & Tax Audits\nRegulatory authorities in Germany and France have initiated reviews regarding subscription revenue recognition. Companies operating cross-border data centers in Frankfurt face mandatory compliance reporting starting Q1 of next fiscal year.",
+      "word_count": 273
     },
     {
       "doc_id": "S4",
       "chunk_id": "00",
       "tag": "[S4:00]",
+      "doc_title": "doc3_sustainability_policy.md",
+      "chunk_text": "# Corporate Environmental, Social & Sustainability Strategy (2025-2035)\n\n## Section 1: Executive Environmental Roadmap\nApex Global Technologies is committed to driving decarbonization across all data center facilities, hardware supply chains, and administrative infrastructure over the next decade. ## Section 2: Greenhouse Gas Emission Targets & Timelines\n- Scope 1 & Scope 2 Emissions: Apex targets a verified 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the target year 2030, using 2020 baseline metrics. - Net-Zero Operations Commitment: Apex commits to achieving complete Net-Zero carbon emissions across all direct operations by the target year 2040. - Scope 3 Supply Chain Status: Scope 3 supply chain greenhouse gas emission accounting standards remain under internal review. Metrics and vendor procurement guidelines for Scope 3 have not been finalized or published. ## Section 3: Renewable Energy & Data Center Cooling\n- Clean Energy Procurement: By 2028, 100% of electrical energy consumed by Apex cloud data centers will be backed by long-term renewable Power Purchase Agreements (PPAs) for solar and wind power. - Water Usage Effectiveness (WUE): Flagship facilities in Frankfurt utilize direct evaporative cooling systems, achieving a WUE ratio of 1.15 liters per kWh. ## Section 4: Circular Economy & Electronic Waste\n100% of decommissioned server chassis, solid-state drives, and network switches undergo certified e-waste recycling through ISO 14001 certified partners. Single-use plastics were eliminated from all corporate facilities as of Q2 2024.",
+      "word_count": 237
+    },
+    {
+      "doc_id": "S5",
+      "chunk_id": "00",
+      "tag": "[S5:00]",
       "doc_title": "doc4_security_whitepaper.md",
-      "chunk_text": "# Apex Security Architecture & Compliance Whitepaper\n\n## Security Standards & Encryption\nApex Global Technologies implements end-to-end cryptographic defense across all customer and internal infrastructure:\n- Encryption at Rest: All persistent storage volumes, vector database indexes, and database backups are encrypted using AES-256 with customer-managed or KMS-managed keys. - Encryption in Transit: Transport Layer Security (TLS 1.3) is mandated for all external HTTP requests and intra-cluster communication. Lower TLS versions (1.0, 1.1, 1.2) are explicitly disabled. ## Access Control & Identity Management\nApex enforces a Zero-Trust network architecture. All internal microservices require mutual TLS (mTLS) authentication. Employee administrative access to production clusters requires hardware token Multi-Factor Authentication (MFA) and is governed by Just-In-Time (JIT) role elevation expiring after 4 hours. ## Compliance & Certification\n- SOC 2 Type II: Apex undergoes annual third-party SOC 2 Type II audits covering Security, Availability, and Confidentiality trust principles. - ISO/IEC 27001: Certified annually for information security management systems. - Vulnerability Management: Automated static (SAST) and dynamic (DAST) code scanning is integrated into all continuous integration pipelines. Penetration testing is conducted bi-annually by independent external security firms.",
-      "word_count": 183
+      "chunk_text": "# Apex Security Architecture & Compliance Technical Whitepaper\n\n## Section 1: Cryptographic Standards & Data Encryption\nApex Global Technologies enforces end-to-end cryptographic defense across all customer and internal infrastructure:\n- Encryption at Rest: All persistent storage volumes, vector database indexes, and database backups are encrypted using AES-256 with customer-managed keys (CMK) or AWS/GCP KMS integration. - Encryption in Transit: Transport Layer Security (TLS 1.3) is mandated for all external HTTP requests and intra-cluster microservice communications. Legacy TLS versions (1.0, 1.1, 1.2) are explicitly disabled across all endpoints. ## Section 2: Identity, Access Control & Zero-Trust\n- Zero-Trust Network Architecture: All internal microservices require mutual TLS (mTLS) authentication and SPIFFE/SPIRE identity tokens. - Administrative Privileges: Employee administrative access to production clusters requires hardware token Multi-Factor Authentication (FIDO2/WebAuthn) and is governed by Just-In-Time (JIT) role elevation expiring after 4 hours. ## Section 3: Vulnerability Management & Testing\n- Automated SAST & DAST: Static application security testing (SAST) and dynamic analysis (DAST) are integrated into all continuous deployment pipelines. - Independent Penetration Testing: Bi-annual third-party penetration audits are conducted by independent security firms. ## Section 4: Compliance Certifications & Audit Scope\n- SOC 2 Type II: Apex undergoes annual third-party SOC 2 Type II audits covering Security, Availability, and Confidentiality trust principles. - ISO/IEC 27001 & ISO 27017: Certified annually for cloud security management. - Health Insurance Portability and Accountability Act (HIPAA): Business Associate Agreements (BAAs) are executed for enterprise healthcare customers storing Protected Health Information (PHI).",
+      "word_count": 244
+    },
+    {
+      "doc_id": "S6",
+      "chunk_id": "00",
+      "tag": "[S6:00]",
+      "doc_title": "doc5_ai_governance_policy.md",
+      "chunk_text": "# Apex Enterprise AI Governance & Safety Framework (2025)\n\n## Section 1: AI Safety Principles & Ethical Standards\nApex Global Technologies adheres to rigorous Responsible AI governance across model development, retrieval-augmented generation (RAG), and customer-facing inference APIs. All AI systems deployed on Apex Cloud must comply with three core tenets: Fairness, Transparency, and Verifiable Grounding. ## Section 2: Model Alignment & Bias Mitigation\n- Training Data Provenance: Synthetic and curated training datasets are scrubbed of Personally Identifiable Information (PII) using automated regex and NER filters prior to fine-tuning. - Bias Evaluation: Fine-tuned LLMs undergo standardized evaluation using Benchmark Safety Suites (e.g. RealToxicityPrompts and BBQ) to detect demographic bias prior to production release. ## Section 3: Human-in-the-Loop (HITL) Controls\nFor high-risk decision domains including automated credit scoring, legal analysis, and medical advice generation, Apex platform rules mandate Human-in-the-Loop (HITL) review. Automated AI decisions without human oversight in these restricted domains are strictly prohibited under platform Terms of Service.",
+      "word_count": 157
+    },
+    {
+      "doc_id": "S7",
+      "chunk_id": "00",
+      "tag": "[S7:00]",
+      "doc_title": "doc6_product_roadmap_2026.md",
+      "chunk_text": "# Apex Product Strategy & Technology Roadmap (2026-2027)\n\n## Section 1: Post-Quantum Cryptography Migration\nIn response to NIST quantum resilience guidelines, Apex engineering has initiated a phased migration to Post-Quantum Cryptography (PQC). By Q2 2026, all TLS key exchanges will default to Kyber-768 (ML-KEM) and Dilithium digital signatures for intra-cluster traffic. ## Section 2: High-Performance Serverless Vector Indexing\nApex Cloud will launch a managed Serverless Vector Database service in Q1 2026, offering sub-10ms retrieval latency across 1 billion dense embeddings using HNSW (Hierarchical Navigable Small World) index graphs and IVF-PQ quantization. ## Section 3: Edge AI Acceleration & On-Device Models\nBy Q3 2026, Apex will introduce lightweight 3B parameter quantized models optimized for edge gateways and IoT hardware, enabling offline RAG retrieval without active cloud connectivity.",
+      "word_count": 126
+    },
+    {
+      "doc_id": "S8",
+      "chunk_id": "00",
+      "tag": "[S8:00]",
+      "doc_title": "doc7_legal_terms_of_service.md",
+      "chunk_text": "# Apex Cloud Master Services Agreement & Terms of Service\n\n## Section 1: Service Level Agreement (SLA) & Uptime Commitments\nApex Global Technologies guarantees a Monthly Uptime Percentage of 99.99% for Enterprise Tier cloud infrastructure. If uptime falls below 99.99% in a billing month, customers are eligible for Service Credits according to the following schedule:\n- Uptime 99.90% to 99.98%: 10% Service Credit\n- Uptime 99.00% to 99.89%: 25% Service Credit\n- Uptime below 99.00%: 50% Service Credit\n\n## Section 2: Data Ownership & Data Deletion Commitments\n- Customer Data Ownership: Customers retain exclusive intellectual property ownership of all uploaded data, files, and fine-tuned model weights. - Deletion SLA: Upon contract termination or explicit API deletion request, Apex warrants complete physical and logical purging of customer data from storage volumes and backup media within 30 business days. ## Section 3: Limitation of Liability & Indemnification\nTo the maximum extent permitted by applicable law, Apex's total aggregate liability arising out of or related to service interruptions shall not exceed the total fees paid by customer in the 12 months preceding the incident.",
+      "word_count": 181
+    },
+    {
+      "doc_id": "S9",
+      "chunk_id": "00",
+      "tag": "[S9:00]",
+      "doc_title": "doc8_quarterly_audit_notes.md",
+      "chunk_text": "# Independent Auditor Report & Tax Reserve Footnotes (Q3)\n\n## Section 1: Auditor Financial Disclosures\nIndependent accounting firm Deloitte & Touche LLP conducted a review of Apex Global Technologies' condensed financial statements for Q3. ## Section 2: Contingent Liabilities & Tax Reserves\nApex maintains a contingent tax reserve of $18.5 million regarding ongoing state sales tax audits in California and Texas. Management believes existing reserves are adequate to satisfy all potential assessment outcomes. ## Section 3: Revenue Amortization & Contract Assets\nAudit procedures identified $42 million in unrecognized contract assets related to multi-year enterprise platform commitments. Amortization of these contract assets is scheduled across a 36-month linear schedule commencing Q1 of next fiscal year.",
+      "word_count": 114
+    },
+    {
+      "doc_id": "S10",
+      "chunk_id": "00",
+      "tag": "[S10:00]",
+      "doc_title": "doc9_disaster_recovery_plan.md",
+      "chunk_text": "# Apex Business Continuity & Disaster Recovery Framework\n\n## Section 1: Recovery Time & Recovery Point Objectives\nApex Global Technologies maintains automated disaster recovery protocols for all enterprise cloud regions:\n- Recovery Time Objective (RTO): Target time to restore operational services following a major outage is less than 15 minutes (< 15 mins). - Recovery Point Objective (RPO): Maximum tolerable data loss duration is less than 1 minute (< 1 min) via continuous asynchronous block-level replication. ## Section 2: Multi-Region Failover Architecture\nProduction databases utilize automated multi-region active-active clustering. Primary traffic is automatically rerouted to secondary data hubs in Northern Virginia or Frankfurt within 30 seconds of heartbeat loss detection.",
+      "word_count": 110
     }
   ],
   "embeddings": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
     [
       0.9414271712303162,
       0.33721643686294556,
@@ -42,27 +97,62 @@
       0.0
     ],
     [
-      0.9337801337242126,
-      0.3578472137451172,
+      1.0,
       0.0,
-      0.0,
-      0.0
-    ],
-    [
-      0.9337801337242126,
-      0.3578472137451172,
       0.0,
       0.0,
       0.0
     ],
     [
-      0.7071067690849304,
-      0.7071067690849304,
+      0.9222914576530457,
+      0.3864952325820923,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.7782829403877258,
+      0.627913773059845,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.861037015914917,
+      0.5085422992706299,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.627913773059845,
+      0.7782829403877258,
       0.0,
       0.0,
       0.0
     ]
   ],
-  "total_documents": 4,
-  "total_chunks": 4
+  "total_documents": 10,
+  "total_chunks": 10
 }

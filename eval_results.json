@@ -1,165 +1,250 @@
 {
-  "timestamp": "2026-08-01 22:51:02",
-  "total_questions": 10,
-  "verified_questions_count": 10,
-  "verification_pass_rate_percent": 100.0,
-  "average_citation_density": 1.0,
-  "average_marker_drop_rate": 0.0,
+  "timestamp": "2026-08-01 23:23:17",
+  "total_questions": 15,
+  "verified_questions_count": 11,
+  "verification_pass_rate_percent": 73.33,
+  "average_citation_density": 0.9486,
+  "average_marker_drop_rate": 0.0514,
   "repair_passes_executed": 5,
   "results": [
     {
       "id": "Q01",
       "type": "directly_answerable",
       "question": "What encryption protocols and algorithms are used for data at rest and in transit in Apex systems?",
-      "expected_behavior": "Must cite AES-256 for data at rest and TLS 1.3 for data in transit using source doc4 markers.",
-      "generated_answer": "Apex systems use AES-256 encryption for data at rest, with customer-managed or KMS-managed keys [S4:00]. For data in transit, Apex implements Transport Layer Security (TLS 1.3) for all external HTTP requests and intra-cluster communication, with lower TLS versions explicitly disabled [S4:00].\n\nTherefore, the encryption protocols and algorithms used by Apex systems are AES-256 for data at rest and TLS 1.3 for data in transit [S4:00].\n\nConfidence: Fully supported\n\nSources used:\n- S1: doc1_company_q3_report.md\n- S2: doc2_market_analysis.md\n- S3: doc3_sustainability_policy.md\n- S4: doc4_security_whitepaper.md",
+      "expected_behavior": "Must cite AES-256 for data at rest and TLS 1.3 for data in transit using doc4.",
+      "generated_answer": "Apex systems use AES-256 for encryption at rest [S5:00] and Transport Layer Security (TLS 1.3) for encryption in transit [S5:00]. Additionally, Apex has initiated a phased migration to Post-Quantum Cryptography (PQC) [S7:00], which will default to Kyber-768 (ML-KEM) and Dilithium digital signatures for intra-cluster traffic by Q2 2026.\n\nSources used:\n- doc4_security_whitepaper.md\n- doc6_product_roadmap_2026.md\nConfidence: Fully supported",
       "verification_status": "VERIFIED",
       "citation_density": 1.0,
       "drop_rate": 0.0,
-      "repaired": true,
+      "repaired": false,
       "markers_found": [
-        "[S4:00]"
+        "[S7:00]",
+        "[S5:00]"
       ],
-      "execution_time_sec": 10.51
+      "execution_time_sec": 2.01
     },
     {
       "id": "Q02",
       "type": "directly_answerable",
       "question": "What is Apex's target year to achieve Net-Zero carbon emissions and what is the 2030 target for Scope 1 & 2 emissions?",
       "expected_behavior": "Must cite 2040 for Net-Zero and 60% reduction for Scope 1 & 2 emissions by 2030 from doc3.",
-      "generated_answer": "Apex targets a 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the year 2030, compared to a 2020 baseline [S3:00]. The target year to achieve Net-Zero carbon emissions is 2040 [S3:00]. \n\nFor Scope 1 & 2 emissions in 2030, Apex aims for a 60% reduction, not a specific target value [S3:00].\n\nSources used:\n- doc3_sustainability_policy.md \u2014 # Corporate Environmental & Sustainability Strategy (2025-2035)\n- doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Financial & Operational Report\n\nConfidence: Fully supported",
+      "generated_answer": "Apex's target year to achieve Net-Zero carbon emissions is 2040 [S4:02]. The 2030 target for Scope 1 & 2 emissions is a 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions, using 2020 baseline metrics [S4:03].\n\nSources used:\n- doc3_sustainability_policy.md\n- doc4_security_whitepaper.md\n- doc7_legal_terms_of_service.md\n- doc8_quarterly_audit_notes.md",
       "verification_status": "VERIFIED",
       "citation_density": 1.0,
       "drop_rate": 0.0,
       "repaired": false,
       "markers_found": [
-        "[S3:00]"
+        "[S4:03]",
+        "[S4:02]"
       ],
-      "execution_time_sec": 1.26
+      "execution_time_sec": 2.01
     },
     {
       "id": "Q03",
       "type": "directly_answerable",
       "question": "How much did Apex invest in Research & Development (R&D) during Q3, and what were the primary focus areas?",
-      "expected_behavior": "Must cite $45 million investment focusing on generative AI integration and high-throughput vector index algorithms from doc1.",
-      "generated_answer": "Apex invested $45 million into Research & Development (R&D) during Q3, focusing heavily on generative AI integration and high-throughput vector index algorithms [S1:01]. Apex's primary focus areas of R&D investment were generative AI integration and high-throughput vector index algorithms [S1:01]. The total Q3 revenue reached $1.42 billion, representing a 12% Year-over-Year (YoY) growth compared to Q3 of the previous fiscal year [S1:00]. Growth was primarily propelled by the Enterprise Cloud Infrastructure unit, which experienced a 28% surge in demand [S1:00]. Apex's Operating Margin was 21.5%, up 120 basis points YoY [S1:00]. Apex had $620 million in liquid cash equivalents at the close of Q3 [S1:00]. North American operations contributed $850 million to total Q3 revenue [S1:00]. European markets accounted for $370 million, while Asia-Pacific generated $200 million [S1:00]. Apex established a new cloud data hub in Frankfurt, Germany to comply with local data sovereignty mandates [S1:00]. Apex management projects Q4 revenue between $1.48 billion and $1.52 billion [S1:00]. Full-year R&D allocation is projected to reach $180 million [S1:00]. Apex targets a 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the year 2030, compared to a 2020 baseline [S3:00]. Apex commits to achieving complete Net-Zero carbon emissions across all direct operations by the target year 2040 [S3:00]. By 2028, 100% of electricity utilized by Apex data centers will be sourced from verified wind and solar power purchase agreements (PPAs) [S3:00]. Apex's Enterprise Cloud Infrastructure market share in Q3 stands at 14.2% [S2:00]. Apex's true Q3 YoY revenue growth, calculated using adjusted ASC 606 standards, is 8.5% [S2:00]. Apex prematurely recognized $42 million in deferred subscription revenue [S2:00]. Apex's R&D spend represents 3.17% of total revenue, which is below the industry peer average of 5.8% [S2:00]. Regulatory bodies in the European Union have tightened rules regarding subscription accounting [S2:00]. Apex implements end-to-end cryptographic defense across all customer and internal infrastructure [S4:00]. All persistent storage volumes, vector database indexes, and database backups are encrypted using AES-256 with customer-managed or KMS-managed keys [S4:00]. Transport Layer Security (TLS 1.3) is mandated for all external HTTP requests and intra-cluster communication [S4:00]. Apex enforces a Zero-Trust network architecture [S4:00]. All internal microservices require mutual TLS (mTLS) authentication [S4:00]. Employee administrative access to production clusters requires hardware token Multi-Factor Authentication (MFA) and is governed by Just-In-Time (JIT) role elevation expiring after 4 hours [S4:00]. Apex undergoes annual third-party SOC 2 Type II audits covering Security, Availability, and Confidentiality trust principles [S4:00]. Apex is certified annually for information security management systems according to ISO/IEC 27001 [S4:00]. Automated static (SAST) and dynamic (DAST) code scanning is integrated into all continuous integration pipelines [S4:00]. Penetration testing is conducted bi-annually by independent external security firms [S4:00].\n\nConfidence: [Partially supported]\n\nSources used:\n- doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Financial & Operational Report\n- doc2_market_analysis.md \u2014 # Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n- doc3_sustainability_policy.md \u2014 # Corporate Environmental & Sustainability Strategy (2025-2035)\n- doc4_security_whitepaper.md \u2014 # Apex Security Architecture & Compliance Whitepaper",
-      "verification_status": "VERIFIED",
-      "citation_density": 1.0,
-      "drop_rate": 0.0,
+      "expected_behavior": "Must cite $45 million investment focusing on high-throughput hybrid vector retrieval algorithms and low-latency streaming inference pipelines from doc1.",
+      "generated_answer": "Apex invested $45 million in Research & Development (R&D) during Q3 [S2:03]. The primary focus areas for R&D engineering teams were: \n1. High-throughput hybrid vector retrieval algorithms using combined dense and sparse indexing [S2:03].\n2. Low-latency streaming inference pipelines for enterprise generative AI applications [S2:03].\n\nSources used:\n- doc1_company_q3_report.md\n- doc2_market_analysis.md",
+      "verification_status": "PARTIAL",
+      "citation_density": 0.75,
+      "drop_rate": 0.25,
       "repaired": true,
       "markers_found": [
-        "[S4:00]",
-        "[S2:00]",
-        "[S3:00]",
-        "[S1:00]",
-        "[S1:01]"
+        "[S2:03]"
       ],
-      "execution_time_sec": 10.38
+      "execution_time_sec": 45.87
     },
     {
       "id": "Q04",
-      "type": "partially_answerable",
-      "question": "What are Apex's reduction targets for Scope 1, Scope 2, and Scope 3 supply chain greenhouse gas emissions?",
-      "expected_behavior": "Must answer Scope 1 & 2 targets (60% by 2030) with citations, but explicitly state that Scope 3 metrics have not been finalized or published.",
-      "generated_answer": "Apex's reduction targets for Scope 1, Scope 2, and Scope 3 supply chain greenhouse gas emissions are as follows: \n\n- Scope 1 & 2 Emissions: Apex targets a 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the year 2030, compared to a 2020 baseline [S3:00].\n- Scope 3 supply chain emission accounting guidelines remain under internal review and metrics have not been finalized or published [S3:00].\n\nSources used:\n- doc3_sustainability_policy.md \u2014 # Corporate Environmental & Sustainability Strategy (2025-2035)\n- doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Financial & Operational Report\n- doc2_market_analysis.md \u2014 # Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n- doc4_security_whitepaper.md \u2014 # Apex Security Architecture & Compliance Whitepaper\n\nConfidence: [Partially supported]",
+      "type": "directly_answerable",
+      "question": "What are Apex's Recovery Time Objective (RTO) and Recovery Point Objective (RPO) targets for disaster recovery?",
+      "expected_behavior": "Must cite RTO under 15 minutes and RPO under 1 minute from doc9.",
+      "generated_answer": "Apex's Recovery Time Objective (RTO) target is less than 15 minutes, and the Recovery Point Objective (RPO) target is less than 1 minute [S10:00:01].\n\nSources used:\n1. doc9_disaster_recovery_plan.md \u2014 # Apex Business Continuity & Disaster Recovery Framework\n2. doc7_legal_terms_of_service.md \u2014 # Apex Cloud Master Services Agreement & Terms of_service\n3. doc2_market_analysis.md \u2014 # Independent Industry Benchmark Analysis: Q3 Enterprise AI & Cloud Market\n4. doc6_product_roadmap_2026.md \u2014 # Apex Product Strategy & Technology Roadmap (2026-2027)\n5. doc3_sustainability_policy.md \u2014 # Corporate Environmental, Social & Sustainability Strategy (2025-2035)\n6. doc8:00 \u2014 # Apex Cloud Master Services Agreement & Terms of Service\n7. doc3:00 \u2014 # Independent Industry Benchmark Analysis: Q3 Enterprise AI & Cloud Market\n8. doc7:00 \u2014 # Apex Product Strategy & Technology Roadmap (2026-2027)\n9. doc4:00 \u2014 # Corporate Environmental, Social & Sustainability Strategy (2025-2035)\n10. doc10:00 \u2014 # Apex Business Continuity & Disaster Recovery Framework",
       "verification_status": "VERIFIED",
       "citation_density": 1.0,
       "drop_rate": 0.0,
       "repaired": false,
       "markers_found": [
-        "[S3:00]"
+        "[S10:00:01]"
       ],
-      "execution_time_sec": 24.25
+      "execution_time_sec": 20.69
     },
     {
       "id": "Q05",
+      "type": "directly_answerable",
+      "question": "What post-quantum cryptography algorithms will Apex adopt by Q2 2026 for intra-cluster traffic?",
+      "expected_behavior": "Must cite Kyber-768 (ML-KEM) and Dilithium digital signatures from doc6.",
+      "generated_answer": "Apex will adopt Kyber-768 (ML-KEM) for key exchanges and Dilithium digital signatures for intra-cluster traffic by Q2 2026 [S7:00].\n\nConfidence: Fully supported\n\nSources used:\n- doc6_product_roadmap_2026.md \u2014 # Apex Product Strategy & Technology Roadmap (2026-2027)",
+      "verification_status": "VERIFIED",
+      "citation_density": 1.0,
+      "drop_rate": 0.0,
+      "repaired": false,
+      "markers_found": [
+        "[S7:00]"
+      ],
+      "execution_time_sec": 15.18
+    },
+    {
+      "id": "Q06",
+      "type": "directly_answerable",
+      "question": "What Monthly Uptime Percentage does Apex guarantee for Enterprise Tier cloud infrastructure and what is the data deletion SLA?",
+      "expected_behavior": "Must cite 99.99% uptime guarantee and 30 business days deletion SLA from doc7.",
+      "generated_answer": "Apex guarantees a Monthly Uptime Percentage of 99.99% for Enterprise Tier cloud infrastructure [S8:00]. If uptime falls below 99.99% in a billing month, customers are eligible for Service Credits according to the following schedule:\n- Uptime 99.90% to 99.98%: 10% Service Credit\n- Uptime 99.00% to 99.89%: 25% Service Credit\n- Uptime below 99.00%: 50% Service Credit [S8:00].\n\nUpon contract termination or explicit API deletion request, Apex warrants complete physical and logical purging of customer data from storage volumes and backup media within 30 business days [S8:00].\n\nConfidence: Fully supported\nSources used:\n- doc7_legal_terms_of_service.md \u2014 Apex Cloud Master Services Agreement & Terms of Service",
+      "verification_status": "VERIFIED",
+      "citation_density": 1.0,
+      "drop_rate": 0.0,
+      "repaired": false,
+      "markers_found": [
+        "[S8:00]"
+      ],
+      "execution_time_sec": 21.59
+    },
+    {
+      "id": "Q07",
+      "type": "partially_answerable",
+      "question": "What are Apex's reduction targets for Scope 1, Scope 2, and Scope 3 supply chain greenhouse gas emissions?",
+      "expected_behavior": "Must answer Scope 1 & 2 targets (60% by 2030) with citations, but explicitly state that Scope 3 metrics have not been finalized or published.",
+      "generated_answer": "Apex's reduction targets for Scope 1, Scope 2, and Scope 3 supply chain greenhouse gas emissions are as follows:\n\n- Scope 1 & Scope 2 Emissions: Apex targets a verified 60% reduction in direct operational (Scope 1) and purchased electricity (Scope 2) greenhouse gas emissions by the target year 2030, using 2020 baseline metrics [S4:02].\n- Scope 3 Supply Chain: Apex has not yet finalized or published metrics and vendor procurement guidelines for Scope 3 supply chain greenhouse gas emissions [S4:02].\n\nThe provided sources do not address Apex's reduction targets for Scope 3 supply chain greenhouse gas emissions in detail.\n\nSources used:\n- S4:00 - doc3_sustainability_policy.md \u2014 Corporate Environmental, Social & Sustainability Strategy (2025-2035)\n- S8:00 - doc7_legal_terms_of_service.md \u2014 Apex Cloud Master Services Agreement & Terms of Service",
+      "verification_status": "VERIFIED",
+      "citation_density": 1.0,
+      "drop_rate": 0.0,
+      "repaired": false,
+      "markers_found": [
+        "[S4:02]"
+      ],
+      "execution_time_sec": 20.62
+    },
+    {
+      "id": "Q08",
       "type": "partially_answerable",
       "question": "What was Apex's total Q3 revenue and how much was spent on marketing and sales campaigns?",
       "expected_behavior": "Must state Q3 revenue ($1.42B / 8.5%-12% YoY) with citations, but state explicitly that marketing/sales campaign spend is not provided in sources.",
-      "generated_answer": "Apex's total Q3 revenue was $1.42 billion, representing a 12% Year-over-Year (YoY) growth [S1:00]. However, independent market audits using adjusted ASC 606 standards calculate Apex's true Q3 YoY revenue growth at 8.5% [S2:00]. \n\nRegarding marketing and sales campaigns, the provided sources do not address the specific spending amount. \n\nSources used:\n- doc1_company_q3_report.md - Apex Global Technologies - Q3 Financial & Operational Report\n- doc2_market_analysis.md - Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n- doc3_sustainability_policy.md - Corporate Environmental & Sustainability Strategy (2025-2035)\n- doc4_security_whitepaper.md - Apex Security Architecture & Compliance Whitepaper\n\nConfidence: Partially supported",
+      "generated_answer": "Apex's total Q3 revenue was $1.42 billion [S2:00]. The company spent $45 million on marketing and sales campaigns, which represents 3.17% of total quarterly revenue [S2:03].\n\nSources used:\n- S2:00 - doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Comprehensive Financial & Operational Report\n- S2:03 - doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Comprehensive Financial & Operational Report",
       "verification_status": "VERIFIED",
       "citation_density": 1.0,
       "drop_rate": 0.0,
       "repaired": false,
       "markers_found": [
         "[S2:00]",
-        "[S1:00]"
+        "[S2:03]"
       ],
-      "execution_time_sec": 16.52
+      "execution_time_sec": 21.42
     },
     {
-      "id": "Q06",
+      "id": "Q09",
       "type": "not_answerable",
       "question": "What is the annual base salary and bonus structure of Apex's Chief Executive Officer (CEO)?",
       "expected_behavior": "Must refuse to answer from pretrained memory and explicitly state the provided sources do not address CEO compensation.",
-      "generated_answer": "The provided sources do not address the annual base salary and bonus structure of Apex's Chief Executive Officer (CEO).\n\nSources used:\n- doc1_company_q3_report.md\n- doc2_market_analysis.md\n- doc3_sustainability_policy.md\n- doc4_security_whitepaper.md",
+      "generated_answer": "The provided sources do not address the annual base salary and bonus structure of Apex's Chief Executive Officer (CEO).\n\nSources used:\n- doc4_security_whitepaper.md \u2014 Apex Security Architecture & Compliance Technical Whitepaper\n- doc1_company_q3_report.md \u2014 Apex Global Technologies - Q3 Comprehensive Financial & Operational Report\n- doc3_sustainability_policy.md \u2014 Corporate Environmental, Social & Sustainability Strategy (2025-2035)\n- doc9_disaster_recovery_plan.md \u2014 Apex Business Continuity & Disaster Recovery Framework\n- doc10_competitor_landscape.md \u2014 Enterprise Cloud Infrastructure Competitor Analysis (2025)",
       "verification_status": "VERIFIED",
       "citation_density": 1.0,
       "drop_rate": 0.0,
       "repaired": false,
       "markers_found": [],
-      "execution_time_sec": 10.39
-    },
-    {
-      "id": "Q07",
-      "type": "not_answerable",
-      "question": "Where are Apex's corporate office and data center locations situated in Japan?",
-      "expected_behavior": "Must explicitly state that sources do not address facilities in Japan (or note that doc1 states Apex operates no facilities in Japan).",
-      "generated_answer": "Apex Global Technologies does not have corporate office or data center locations in Japan [S1:00]. Apex currently operates no data centers or corporate facilities in Japan or South Korea [S1:00]. Apex established a new cloud data hub in Frankfurt, Germany, to comply with local data sovereignty mandates [S1:00]. However, this new hub is not in Japan [S1:00].\n\nConfidence: Fully supported\n\nSources used:\n- doc1_company_q3_report.md \u2014 Apex Global Technologies - Q3 Financial & Operational Report\n- doc2_market_analysis.md \u2014 # Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n- doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Financial & Operational Report",
-      "verification_status": "VERIFIED",
-      "citation_density": 1.0,
-      "drop_rate": 0.0,
-      "repaired": true,
-      "markers_found": [
-        "[S1:00]"
-      ],
-      "execution_time_sec": 39.9
-    },
-    {
-      "id": "Q08",
-      "type": "not_answerable",
-      "question": "What is Apex's quarterly stock dividend payout per share for Q4?",
-      "expected_behavior": "Must state explicitly that the provided sources do not contain information regarding stock dividend payouts.",
-      "generated_answer": "Apex's quarterly stock dividend payout per share for Q4 is not explicitly stated in the provided sources [S4:00]. The sources do not address the quarterly stock dividend payout per share for Q4 [S4:00].\n\nSources used:\n- doc1_company_q3_report.md\n- doc2_market_analysis.md\n- doc3_sustainability_policy.md\n- doc4_security_whitepaper.md\n\nConfidence: Not supported by sources",
-      "verification_status": "VERIFIED",
-      "citation_density": 1.0,
-      "drop_rate": 0.0,
-      "repaired": true,
-      "markers_found": [
-        "[S4:00]"
-      ],
-      "execution_time_sec": 34.36
-    },
-    {
-      "id": "Q09",
-      "type": "conflicting_sources",
-      "question": "What was Apex Global Technologies' Year-over-Year (YoY) revenue growth rate in Q3?",
-      "expected_behavior": "Must report the conflict between doc1 (claiming 12% YoY growth) and doc2 (claiming 8.5% YoY growth due to ASC 606 revenue recognition adjustments) and cite both S1 and S2.",
-      "generated_answer": "Apex Global Technologies' Year-over-Year (YoY) revenue growth rate in Q3 was 12% [S1:00]. However, independent market audits using adjusted ASC 606 standards calculate Apex's true Q3 YoY revenue growth at 8.5% [S2:00], which is attributed to the premature recognition of $42 million in deferred subscription revenue [S2:00]. This discrepancy arises from the premature recognition of $42 million in deferred subscription revenue [S2:00].\n\nConfidence: Partially supported\n\nSources used:\n- doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Financial & Operational Report\n- doc2_market_analysis.md \u2014 # Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market",
-      "verification_status": "VERIFIED",
-      "citation_density": 1.0,
-      "drop_rate": 0.0,
-      "repaired": true,
-      "markers_found": [
-        "[S2:00]",
-        "[S1:00]"
-      ],
-      "execution_time_sec": 27.56
+      "execution_time_sec": 20.3
     },
     {
       "id": "Q10",
+      "type": "not_answerable",
+      "question": "Where are Apex's corporate office and data center locations situated in Japan?",
+      "expected_behavior": "Must explicitly state that sources do not address facilities in Japan (or note that doc1 states Apex operates no facilities in Japan).",
+      "generated_answer": "Apex's corporate office and data center locations are not situated in Japan [S7:00]. \n\nConfidence: Fully supported\n\nSources used:\n- doc1_company_q3_report.md \u2014 Apex Global Technologies - Q3 Comprehensive Financial & Operational Report\n- doc6_product_roadmap_2026.md \u2014 Apex Product Strategy & Technology Roadmap (2026-2027)",
+      "verification_status": "VERIFIED",
+      "citation_density": 1.0,
+      "drop_rate": 0.0,
+      "repaired": true,
+      "markers_found": [
+        "[S7:00]"
+      ],
+      "execution_time_sec": 46.81
+    },
+    {
+      "id": "Q11",
+      "type": "not_answerable",
+      "question": "What is Apex's quarterly stock dividend payout per share for Q4?",
+      "expected_behavior": "Must state explicitly that the provided sources do not contain information regarding stock dividend payouts.",
+      "generated_answer": "Apex's quarterly stock dividend payout per share for Q4 is not explicitly stated in the provided sources [S1:00]. However, management projects Q4 total revenue between $1.48 billion and $1.52 billion [S1:04].\n\nTherefore, without specific information on the dividend payout, we can only speculate on the potential impact of revenue growth on dividend payments.\n\nSources used:\n- doc1_company_q3_report.md\n- doc2_market_analysis.md",
+      "verification_status": "PARTIAL",
+      "citation_density": 0.6667,
+      "drop_rate": 0.3333,
+      "repaired": true,
+      "markers_found": [
+        "[S1:04]",
+        "[S1:00]"
+      ],
+      "execution_time_sec": 47.51
+    },
+    {
+      "id": "Q12",
       "type": "conflicting_sources",
-      "question": "What is Apex's market share in the enterprise cloud market and how does its R&D spending compare to industry norms?",
-      "expected_behavior": "Must cite doc2 figures (14.2% market share, 3.17% of revenue spent on R&D below industry average of 5.8%) while contrasting with doc1's performance narrative.",
-      "generated_answer": "Apex's market share in the enterprise cloud market is 14.2% as of Q3, trailing key competitors Zenith Corp (31.0%) and CloudMatrix (22.5%) [S2:00]. \n\nApex's R&D spending as a percentage of total revenue is 3.17%, which is below the industry peer average of 5.8% [S2:00].\n\nSources used:\n- doc2_market_analysis.md \u2014 # Industry Benchmark Analysis: Q3 Cloud & Enterprise AI Market\n- doc1_company_q3_report.md \u2014 # Apex Global Technologies - Q3 Financial & Operational Report\nConfidence: Fully supported",
+      "question": "What was Apex Global Technologies' Year-over-Year (YoY) revenue growth rate in Q3?",
+      "expected_behavior": "Must report the conflict between doc1 (claiming 12% YoY growth) and doc2 (claiming 8.5% YoY growth due to ASC 606 revenue recognition adjustments) and cite both S1 and S2.",
+      "generated_answer": "Apex Global Technologies' Year-over-Year (YoY) revenue growth rate in Q3 was 12% [S2:00]. However, an independent market audit by TechMarket Insights using adjusted ASC 606 revenue recognition standards calculated Apex's true Q3 YoY revenue growth at 8.5% [S3:00].\n\nConfidence: Partially supported\n\nSources used:\n- S2: doc1_company_q3_report.md\n- S3: doc2_market_analysis.md",
       "verification_status": "VERIFIED",
       "citation_density": 1.0,
       "drop_rate": 0.0,
       "repaired": false,
       "markers_found": [
+        "[S3:00]",
         "[S2:00]"
       ],
-      "execution_time_sec": 23.03
+      "execution_time_sec": 21.03
+    },
+    {
+      "id": "Q13",
+      "type": "conflicting_sources",
+      "question": "What is Apex's market share in the enterprise cloud market and how does its R&D spending compare to industry norms?",
+      "expected_behavior": "Must cite doc2 figures (14.2% market share, 3.17% of revenue spent on R&D below industry average of 5.8%) while contrasting with doc1's performance narrative.",
+      "generated_answer": "Apex's market share in the enterprise cloud market is 14.2% [S2:02][S3:02]. This is lower than industry leaders Zenith Corp (31.0%) and CloudMatrix (22.5%) [S3:02]. Apex invested $45 million into R&D during Q3, representing 3.17% of total quarterly revenue [S2:03]. R&D engineering teams focused heavily on two primary technology pillars: 1. High-throughput hybrid vector retrieval algorithms using combined dense and sparse indexing [S2:03]. 2. Low-latency streaming inference pipelines for enterprise generative AI applications [S2:03]. Apex's R&D spending as a percentage of total revenue is 3.17%, which is below the peer group benchmark average of 5.8% [S3:02].\n\nSources used:\n- S2:00 - Apex Global Technologies - Q3 Comprehensive Financial & Operational Report\n- S3:00 - Independent Industry Benchmark Analysis: Q3 Enterprise AI & Cloud Market",
+      "verification_status": "PARTIAL",
+      "citation_density": 0.8571,
+      "drop_rate": 0.1429,
+      "repaired": true,
+      "markers_found": [
+        "[S3:02]",
+        "[S2:02]",
+        "[S2:03]"
+      ],
+      "execution_time_sec": 46.94
+    },
+    {
+      "id": "Q14",
+      "type": "directly_answerable",
+      "question": "How much contingent tax reserve does Apex maintain for state sales tax audits?",
+      "expected_behavior": "Must cite $18.5 million contingent tax reserve for California and Texas sales tax audits from doc8.",
+      "generated_answer": "Apex maintains a contingent tax reserve of $18.5 million for ongoing state sales tax audits in California and Texas [S9:00].\n\nConfidence: Fully supported\nSources used:\n- doc8_quarterly_audit_notes.md \u2014 Independent Auditor Report & Tax Reserve Footnotes (Q3) [S9:00]",
+      "verification_status": "VERIFIED",
+      "citation_density": 1.0,
+      "drop_rate": 0.0,
+      "repaired": false,
+      "markers_found": [
+        "[S9:00]"
+      ],
+      "execution_time_sec": 17.92
+    },
+    {
+      "id": "Q15",
+      "type": "directly_answerable",
+      "question": "What AI safety rules apply to training data PII scrubbing and high-risk decision domains?",
+      "expected_behavior": "Must cite PII scrubbing with regex/NER filters and mandatory Human-in-the-Loop (HITL) review for high-risk domains from doc5.",
+      "generated_answer": "Apex Enterprise AI Governance & Safety Framework (2025) outlines three core tenets for AI systems deployed on Apex Cloud: Fairness, Transparency, and Verifiable Grounding [S6:00]. For high-risk decision domains, including automated credit scoring, legal analysis, and medical advice generation, Apex platform rules mandate Human-in-the-Loop (HITL) review, with automated AI decisions without human oversight strictly prohibited under platform Terms of Service [S6:03]. Apex adheres to rigorous Responsible AI governance across model development, retrieval-augmented generation (RAG), and customer-facing inference APIs [S6:00]. All AI systems deployed on Apex Cloud must comply with three core tenets: Fairness, Transparency, and Verifiable Grounding [S6:00]. Training Data Provenance: Synthetic and curated training datasets are scrubbed of Personally Identifiable Information (PII) using automated regex and NER filters prior to fine-tuning [S6:02]. Bias Evaluation: Fine-tuned LLMs undergo standardized evaluation using Benchmark Safety Suites (e.g. RealToxicityPrompts and BBQ) to detect demographic bias prior to production release [S6:02]. Automated AI decisions without human oversight in high-risk decision domains are strictly prohibited under platform Terms of Service [S6:03]. Apex platform rules mandate Human-in-the-Loop (HITL) review for high-risk decision domains including automated credit scoring, legal analysis, and medical advice generation [S6:03]. The Apex Cloud Master Services Agreement & Terms of Service (2025) outlines a Service Level Agreement (SLA) & Uptime Commitments, Data Ownership & Data Deletion Commitments, and Limitation of Liability & Indemnification [S8:00]. Apex Global Technologies guarantees a Monthly Uptime Percentage of 99.99% for Enterprise Tier cloud infrastructure [S8:01]. Apex warrants complete physical and logical purging of customer data from storage volumes and backup media within 30 business days upon contract termination or explicit API deletion request [S8:02]. Apex's total aggregate liability arising out of or related to service interruptions shall not exceed the total fees paid by customer in the 12 months preceding the incident [S8:03]. Apex Business Continuity & Disaster Recovery Framework (2025) outlines automated disaster recovery protocols for all enterprise cloud regions, with a Recovery Time Objective (RTO) of less than 15 minutes and a Recovery Point Objective (RPO) of less than 1 minute [S10:00]. Apex Global Technologies maintains automated disaster recovery protocols for all enterprise cloud regions [S10:00]. The target time to restore operational services following a major outage is less than 15 minutes (< 15 mins) [S10:00]. The maximum tolerable data loss duration is less than 1 minute (< 1 min) via continuous asynchronous block-level replication [S10:00]. Apex maintains a contingent tax reserve of $18.5 million regarding ongoing state sales tax audits in California and Texas [S9:00]. Audit procedures identified $42 million in unrecognized contract assets related to multi-year enterprise platform commitments [S9:00]. Apex offers zero egress bandwidth fees for intra-cloud transfers, compared to standard $0.09/GB egress pricing on rival hyperscalers [S1:00]. This pricing structure provides a 35% overall cost advantage for high-bandwidth LLM training workloads [S1:00]. Apex Global Technologies holds a 14.2% specialized market share focused on developer AI pipelines [S1:00].\n\nConfidence: Partially supported\n\nSources used:\n- Apex Enterprise AI Governance & Safety Framework (2025) [S6:00]\n- Apex Cloud Master Services Agreement & Terms of Service (2025) [S8:00]\n- Apex Business Continuity & Disaster Recovery Framework (2025) [S10:00]\n- Independent Auditor Report & Tax Reserve Footnotes (Q3) [S9:00]\n- Enterprise Cloud Infrastructure Competitor Analysis (2025) [S1:00]",
+      "verification_status": "PARTIAL",
+      "citation_density": 0.9545,
+      "drop_rate": 0.0455,
+      "repaired": true,
+      "markers_found": [
+        "[S8:00]",
+        "[S6:02]",
+        "[S1:00]",
+        "[S9:00]",
+        "[S6:00]",
+        "[S8:03]",
+        "[S8:01]",
+        "[S8:02]",
+        "[S10:00]",
+        "[S6:03]"
+      ],
+      "execution_time_sec": 41.43
     }
   ]
 }

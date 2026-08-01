@@ -1,15 +1,15 @@
 import re
 from typing import Dict, Any, List
 
-# Regex matching bracket citation markers like [S1:02], [S2:00], stacked [S1:02][S3:01]
-CITATION_REGEX = re.compile(r'\[S\d+:\d{2}\]')
+# Regex matching bracket citation markers like [S1:02], [S2:00], stacked [S1:02][S3:01], and sub-indices [S10:00:01]
+CITATION_REGEX = re.compile(r'\[S\d+:\d{2}(?::\d+)?\]')
 
 class CitationVerifier:
     """
     Step 6 Post-Processor: Verifies every factual sentence in model output has a bracket citation marker.
     Measures marker drop rate and provides feedback for repair pass.
     """
-    def __init__(self, citation_pattern: str = r'\[S\d+:\d{2}\]'):
+    def __init__(self, citation_pattern: str = r'\[S\d+:\d{2}(?::\d+)?\]'):
         self.pattern = re.compile(citation_pattern)
 
     def extract_factual_sentences(self, output_text: str) -> List[str]:
