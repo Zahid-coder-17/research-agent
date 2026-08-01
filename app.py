@@ -177,13 +177,17 @@ tab1, tab2, tab3 = st.tabs(["💬 Query & Research", "📊 Benchmark & Evaluatio
 with tab1:
     st.subheader("Ask a Research Question")
     
-    col_q, col_m, col_k = st.columns([3, 1.5, 1])
+    col_q, col_s, col_m, col_k = st.columns([2.5, 1.5, 1.5, 1])
     with col_q:
         user_query = st.text_input(
             "Enter question:",
             placeholder="e.g. What was Apex's Q3 Year-over-Year revenue growth rate?",
             key="user_query"
         )
+    with col_s:
+        src_choice = st.selectbox("Source Mode", ["Closed Corpus Only", "Live Web Search Only", "Both (Corpus + Web)"])
+        src_map = {"Closed Corpus Only": "corpus", "Live Web Search Only": "web", "Both (Corpus + Web)": "both"}
+        source_mode = src_map[src_choice]
     with col_m:
         mode_choice = st.selectbox("Retrieval Mode", ["Hybrid (RRF)", "Dense Vector", "BM25 Keyword"])
         mode_map = {"Hybrid (RRF)": "hybrid", "Dense Vector": "dense", "BM25 Keyword": "bm25"}
@@ -193,7 +197,7 @@ with tab1:
 
     if st.button("Submit Research Query", use_container_width=True) and user_query:
         with st.spinner("Retrieving top-k contexts & generating grounded answer..."):
-            result = query_agent(user_query, top_k=top_k, retrieval_mode=retrieval_mode)
+            result = query_agent(user_query, top_k=top_k, retrieval_mode=retrieval_mode, source_mode=source_mode)
 
         # Answer Section
         st.markdown("### Answer")
