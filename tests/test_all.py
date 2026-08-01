@@ -54,7 +54,7 @@ class TestEmbeddingEngine(unittest.TestCase):
 
     def test_hybrid_rrf_retrieval(self):
         texts = [c["chunk_text"] for c in self.sample_chunks]
-        vectors = self.embedder.embed_texts(texts, save_vectorizer=True)
+        vectors = self.embedder.embed_texts(texts, save_vectorizer=False)
         self.embedder.build_bm25_index(self.sample_chunks, save_bm25=False)
         
         fused = self.embedder.hybrid_retrieve("AES-256 encryption", self.sample_chunks, vectors, top_k=2, rrf_k=60)

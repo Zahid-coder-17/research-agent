@@ -123,6 +123,28 @@ def web_retrieve(query: str, max_results: int = 5) -> List[Dict[str, Any]]:
                     })
         except Exception as e:
             api_error = f"Web Search API Failure: {e}. Please set TAVILY_API_KEY or SERPER_API_KEY in your .env file for reliable quota."
+            
+            # Fallback to Wikipedia Search API if DDGS rate limits
+            try:
+                import urllib.parse
+                wiki_url = f"https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={urllib.parse.quote(query)}&format=json"
+                headers = {"User-Agent": "Mozilla/5.0"}
+                w_resp = requests.get(wiki_url, headers=headers, timeout=5)
+                if w_resp.status_code == 200:
+                    w_data = w_resp.json()
+                    search_items = w_data.get("query", {}).get("search", [])[:max_results]
+                    for w_item in search_items:
+                        page_title = w_item.get("title", "")
+                        page_url = f"https://en.wikipedia.org/wiki/{urllib.parse.quote(page_title.replace(' ', '_'))}"
+                        search_results.append({
+                            "url": page_url,
+                            "title": page_title,
+                            "snippet": w_item.get("snippet", "")
+                        })
+                    if search_results:
+                        api_error = None
+            except Exception:
+                pass
 
     # Query Reformulation (up to 2 attempts if 0 results)
     if not search_results and not api_error:

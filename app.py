@@ -197,37 +197,43 @@ with tab1:
 
     if st.button("Submit Research Query", use_container_width=True) and user_query:
         with st.spinner("Retrieving top-k contexts & generating grounded answer..."):
-            result = query_agent(user_query, top_k=top_k, retrieval_mode=retrieval_mode, source_mode=source_mode)
+            try:
+                result = query_agent(user_query, top_k=top_k, retrieval_mode=retrieval_mode, source_mode=source_mode)
+            except Exception as e:
+                st.error(f"⚠️ Search / Retrieval Error: {e}")
+                st.info("💡 Tip: Add `TAVILY_API_KEY` or `SERPER_API_KEY` to your `.env` file for high-quota search, or switch Source Mode to 'Closed Corpus Only'.")
+                result = None
 
-        # Answer Section
-        st.markdown("### Answer")
-        st.markdown(result["answer"])
+        if result:
+            # Answer Section
+            st.markdown("### Answer")
+            st.markdown(result["answer"])
 
-        st.divider()
+            st.divider()
 
-        # Verification & Metrics Section
-        ver = result["verification"]
-        m1, m2, m3, m4 = st.columns(4)
-        with m1:
-            st.metric("Verification Status", ver["status"])
-        with m2:
-            st.metric("Citation Density", f"{ver['citation_density']*100:.1f}%")
-        with m3:
-            st.metric("Marker Drop Rate", f"{ver['drop_rate']*100:.1f}%")
-        with m4:
-            st.metric("Repair Pass Executed", "Yes" if result["repaired"] else "No")
+            # Verification & Metrics Section
+            ver = result["verification"]
+            m1, m2, m3, m4 = st.columns(4)
+            with m1:
+                st.metric("Verification Status", ver["status"])
+            with m2:
+                st.metric("Citation Density", f"{ver['citation_density']*100:.1f}%")
+            with m3:
+                st.metric("Marker Drop Rate", f"{ver['drop_rate']*100:.1f}%")
+            with m4:
+                st.metric("Repair Pass Executed", "Yes" if result["repaired"] else "No")
 
-        if ver["uncited_sentences"]:
-            with st.expander("⚠️ Missing Citation Sentences Detected"):
-                for s in ver["uncited_sentences"]:
-                    st.warning(s)
+            if ver["uncited_sentences"]:
+                with st.expander("Missing Citation Sentences Detected"):
+                    for s in ver["uncited_sentences"]:
+                        st.warning(s)
 
-        # Retrieved Contexts Section
-        st.markdown("### Retrieved Context Chunks (Top-k)")
-        for idx, (chunk, score) in enumerate(result["retrieved_chunks"], start=1):
-            with st.expander(f"Chunk {idx}: {chunk['tag']} {chunk['doc_title']} (Similarity: {score:.4f})"):
-                st.markdown(f"**Tag:** `{chunk['tag']}` | **Doc:** {chunk['doc_title']}")
-                st.info(chunk["chunk_text"])
+            # Retrieved Contexts Section
+            st.markdown("### Retrieved Context Chunks (Top-k)")
+            for idx, (chunk, score) in enumerate(result["retrieved_chunks"], start=1):
+                with st.expander(f"Chunk {idx}: {chunk['tag']} {chunk['doc_title']} (Similarity: {score:.4f})"):
+                    st.markdown(f"**Tag:** `{chunk['tag']}` | **Doc:** {chunk['doc_title']}")
+                    st.info(chunk["chunk_text"])
 
 with tab2:
     st.subheader("Evaluation Suite (questions.json)")

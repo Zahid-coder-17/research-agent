@@ -49,7 +49,8 @@ AVAILABLE SOURCES:
 {sources_block}
 
 INSTRUCTIONS:
-Rewrite the answer so that EVERY single sentence containing a factual claim explicitly includes the bracket citation marker [S<doc_id>:<chunk_id>] matching the source where the fact originated.
-Do not output any factual sentence without a bracket citation marker [S<doc_id>:<chunk_id>].
+Rewrite the answer so that EVERY single sentence containing a factual claim explicitly includes the bracket citation marker matching the source where the fact originated.
+Use [S<doc_id>:<chunk_id>] for closed-corpus sources and [W<result_id>:<chunk_id>] for web sources. Preserve the original marker prefix ([S...] or [W...]) exactly as it appears in AVAILABLE SOURCES.
+Do not output any factual sentence without a bracket citation marker.
 Preserve the exact Confidence line and Sources used list at the end.
 """
