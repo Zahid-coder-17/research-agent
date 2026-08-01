@@ -261,6 +261,16 @@ Sources used:
 
 ---
 
+## Limitations
+
+- **API Rate Limits**: The default free Groq API tier and DuckDuckGo search can hit rate limits (`HTTP 429`) quickly during heavy use, though auto-fallbacks mitigate this.
+- **Dynamic Websites**: The `trafilatura` web scraper does not execute JavaScript, so it may fail to extract content from heavily dynamic Single-Page Applications (SPAs).
+- **Latency**: The automated repair pass (Stage 6) requires a second LLM inference call, which increases response latency when citations are missing.
+- **Corpus Formats**: The ingestion pipeline currently only supports `.md` and `.pdf` files.
+- **API Context Windows**: The number of chunks retrieved (`top_k`) must be tuned to fit within the LLM's context window.
+
+---
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
