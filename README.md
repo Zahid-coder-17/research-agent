@@ -136,17 +136,22 @@ python ask.py "What is the latest quantum computing milestone announced by IBM i
 python ask.py "Compare Apex Q3 revenue with current AWS Q3 market results" --source=both
 ```
 
-### 4. Run Live Web Search Unit Test
+### 4. Run Comprehensive Unit Test Suite
+```bash
+python run_tests.py
+```
+
+### 5. Run Live Web Search Unit Test
 ```bash
 python test_web_search.py
 ```
 
-### 5. Run 15-Question Evaluation Suite
+### 6. Run 15-Question Evaluation Suite
 ```bash
 python run_eval.py
 ```
 
-### 6. Launch Visual Web UI
+### 7. Launch Visual Web UI
 ```bash
 streamlit run app.py
 ```
