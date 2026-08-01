@@ -1,4 +1,6 @@
-# 🔍 Verifiable Research Agent (with Inline Citations, Hybrid RRF & Live Web Search)
+# 🔍 Verifiable Research Agent
+
+### Inline Citations · Hybrid RRF Retrieval · Live Web Search · Automated Repair
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Groq API](https://img.shields.io/badge/LLM-Groq--Llama3.3--70B-orange.svg)](https://groq.com/)
@@ -7,69 +9,121 @@
 [![Web Search](https://img.shields.io/badge/Web%20Search-Tavily%2FSerper%2FDDG-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-An agentic research assistant that answers complex technical and financial questions using **ONLY** ingested source documents (closed corpus) and optional **live web search** results. Every factual claim is verifiably grounded with exact inline bracket citations (`[S<doc_id>:<chunk_id>]` for corpus, `[W<result_id>:<chunk_id>]` for web), backed by hybrid RRF retrieval, sentence-level regex post-verification, automated repair passes, and fetch logging.
+An agentic RAG pipeline that answers complex research questions using closed-corpus documents and/or live web search. Every factual claim is verifiably grounded with exact inline bracket citations (`[S<doc_id>:<chunk_id>]` for corpus, `[W<result_id>:<chunk_id>]` for web), enforced by regex post-verification and an automated repair pass.
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
-- 🎯 **Closed-Corpus & Live Web Grounding**: Supports `--source=corpus|web|both`. Answers questions strictly using provided sources with zero pretrained memory hallucination.
-- 🌐 **Live Web Search & Trafilatura Extraction (`src/web_search.py`)**: Uses Tavily API (`TAVILY_API_KEY`), Serper API (`SERPER_API_KEY`), or DuckDuckGo Search. Fetches full page content with `requests` (10s timeout, 1 retry max) and extracts body text with `trafilatura`. Filters pages returning < 100 words.
-- 📜 **Web Fetch Logging (`web_fetch_log.jsonl`)**: Logs every fetched URL with ISO timestamp, HTTP status code, word count, title, and error messages.
-- 🔀 **Hybrid Retrieval (Dense + BM25Okapi RRF)**: Combines TF-IDF vector similarity with BM25 keyword search, merged via Reciprocal Rank Fusion ($score = \sum \frac{1}{60 + rank}$).
-- 📌 **Dual Inline Citation Markers**: Attaches exact citation markers (`[S1:00]` for corpus, `[W1:00]` for web, stacked `[S1:02][W2:01]`) to every factual sentence.
-- 🛡️ **Step-6 Dual Regex Post-Verification**: Computes sentence-level citation density and marker drop rates matching `r'\[(S|W)\d+:\d{2}(?::\d+)?\]'`.
-- 🔧 **Section 8 Automated Repair Pass**: Detects uncited claims and automatically triggers a targeted repair re-prompt to achieve maximum citation coverage.
-- 📊 **15-Question Evaluation Suite**: Comprehensive benchmark covering directly answerable, partially answerable, unanswerable, and conflicting cases.
-- 🎨 **Interactive Streamlit Web UI**: High-contrast visual interface to select source modes (`Corpus`, `Web`, `Both`), retrieval modes (`Hybrid`, `Dense`, `BM25`), test queries, view similarity scores, and review evaluation transcripts.
+| Feature | Description |
+|---------|-------------|
+| **Closed-Corpus + Live Web** | `--source=corpus\|web\|both` — answers from local documents, live internet, or both combined |
+| **Hybrid RRF Retrieval** | Dense cosine similarity + BM25 keyword search merged via Reciprocal Rank Fusion (k=60) |
+| **Dual Citation Markers** | `[S1:00]` for corpus, `[W1:00]` for web — stacked `[S1:02][W2:01]` for multi-source claims |
+| **Step-6 Regex Verification** | Every factual sentence scanned with `r'\[(S\|W)\d+:\d{2}(?::\d+)?\]'` |
+| **Automated Repair Pass** | Uncited claims trigger a targeted re-prompt to maximize citation coverage |
+| **Web Fetch Audit Log** | Every URL fetch logged to `web_fetch_log.jsonl` with timestamp, status, word count |
+| **LLM Auto-Fallback** | `llama-3.3-70b` → `llama-3.1-8b` → offline rule-based simulator |
+| **15-Question Benchmark** | Evaluation suite covering answerable, partial, unanswerable, and conflicting scenarios |
+| **Streamlit Web UI** | Interactive dark-mode interface with source mode, retrieval mode, and chunk inspection |
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
+
+The pipeline processes queries through **6 stages**:
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion["1. Dual Ingestion & Web Retrieval Pipeline"]
-        A["Closed Corpus (10 .md files)"] --> B["Sentence-Aware Chunker"]
-        B --> C["Metadata Tagging S_doc_id:chunk_id"]
-        C --> D["Dense Embedder & BM25Okapi Indexer"]
+    USER["User Question"] --> ASK["ask.py Orchestrator"]
+    
+    subgraph Stage1["Stage 1 - Ingestion"]
+        A1["10 Source Docs (.md/.pdf)"] --> A2["Sentence-Aware Chunker (150-400 words)"]
+        A2 --> A3["Tag: S_doc_id:chunk_id"]
+        A3 --> A4["TF-IDF Vectorizer + BM25Okapi Indexer"]
+        A4 --> A5["index.json + vectorizer.pkl + bm25.pkl"]
+    end
+
+    subgraph Stage2["Stage 2 - Hybrid Retrieval"]
+        ASK --> B1["Dense Cosine Search"]
+        ASK --> B2["BM25 Keyword Search"]
+        B1 --> B3["RRF Fusion (k=60)"]
+        B2 --> B3
+        B3 --> B4["Corpus Chunks with S tags"]
         
-        W1["User Question"] --> W2["Live Web Search API (Tavily/Serper/DDG)"]
-        W2 --> W3["Trafilatura Content Extractor (10s timeout)"]
-        W3 --> W4["Chunker & Tagging W_result_id:chunk_id"]
-        W3 --> W5["web_fetch_log.jsonl Logger"]
+        ASK --> C1["Web Search API (Tavily/Serper/DDG/Wikipedia)"]
+        C1 --> C2["Trafilatura Content Extraction"]
+        C2 --> C3["Chunker + W tags"]
+        C3 --> C4["Web Chunks with W tags"]
     end
 
-    subgraph Retrieval["2. Hybrid Retrieval Layer (RRF)"]
-        D & W4 --> I1["Dense Search (Cosine Sim) & BM25 Search"]
-        I1 --> J1["Ranked List (Dense) & Ranked List (BM25)"]
-        J1 --> K["Reciprocal Rank Fusion (RRF k=60)"]
-        K --> L["Top-k Deduplicated Chunks ([S...] & [W...])"]
+    subgraph Stage3_4["Stage 3-4 - LLM Generation"]
+        B4 --> D1["Merged SOURCES Block"]
+        C4 --> D1
+        D1 --> D2["System Prompt + SOURCES"]
+        D2 --> D3["Groq LLM (70B or 8B fallback)"]
+        D3 --> D4["Raw Answer with S and W markers"]
     end
 
-    subgraph LLM_Exec["3. Grounded LLM Execution & Auto-Fallback"]
-        L --> M["Assemble SOURCES Block + System Prompt"]
-        M --> N["Groq API (llama-3.3-70b-versatile)"]
-        N -- "If Rate Limit 429" --> O["Auto-Fallback (llama-3.1-8b-instant)"]
+    subgraph Stage5_6["Stage 5-6 - Verification and Repair"]
+        D4 --> E1["Regex Citation Verifier"]
+        E1 -->|"Drop Rate > 0%"| E2["Repair Pass (2nd LLM call)"]
+        E2 --> E1
+        E1 -->|"Drop Rate = 0%"| E3["Verified Answer (100% density)"]
     end
+```
 
-    subgraph Verification["4. Step-6 Verification & Automated Repair"]
-        N --> Q["Raw Model Answer"]
-        O --> Q
-        Q --> R["Step-6 Dual Regex Verifier r'[(S|W)...]'"]
-        R -- "Citation Drop Rate > 0%" --> S["Section 8 Automated Repair Pass"]
-        S --> R
-        R -- "Citation Drop Rate = 0%" --> T["Verified Answer + Confidence + Sources Used"]
-    end
+### Stage Details
+
+| Stage | Component | File | Purpose |
+|-------|-----------|------|---------|
+| **1. Ingestion** | `DocumentChunker` | `src/chunker.py` | Sentence-boundary splits, 150-400 words, `[S<id>:<chunk>]` tags |
+| **1. Ingestion** | `EmbeddingEngine` | `src/embeddings.py` | TF-IDF vectorizer + BM25Okapi index builder |
+| **2. Retrieval** | `hybrid_retrieve()` | `src/embeddings.py` | RRF fusion: `score = sum(1/(60+rank))` across dense + BM25 |
+| **2. Retrieval** | `web_retrieve()` | `src/web_search.py` | Live search + Trafilatura extraction + `[W...]` tagging |
+| **3. Assembly** | `format_sources_block()` | `src/agent.py` | Builds `SOURCES:` block with `[S...]` and `[W...]` chunks |
+| **4. Generation** | `_call_llm()` | `src/agent.py` | Groq 70B → 8B → offline fallback cascade |
+| **5. Verification** | `CitationVerifier` | `verify.py` | Regex scan: density, drop rate, uncited sentence detection |
+| **6. Repair** | `REPAIR_PROMPT_TEMPLATE` | `config.py` + `src/agent.py` | Re-prompts LLM with uncited claims for citation repair |
+
+### Web Search API Cascade
+
+When `--source=web` or `--source=both` is used:
+
+```
+TAVILY_API_KEY set? → Tavily Search API
+        ↓ No
+SERPER_API_KEY set? → Serper Google Search API
+        ↓ No
+DuckDuckGo DDGS (free, no key)
+        ↓ Rate Limited?
+Wikipedia Search API (automatic fallback, no key)
 ```
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 research-agent/
-├── sample_sources/            # Expanded 10 Source Documents
+├── config.py                  # Dual system prompt ([S]/[W] rules) + .env loader
+├── ingest.py                  # Stage 1: Corpus ingestion CLI
+├── ask.py                     # Pipeline orchestrator (--source, --retrieval flags)
+├── verify.py                  # Stage 5: Dual regex citation verifier
+├── app.py                     # Streamlit Web UI (all modes + evaluation)
+├── run_eval.py                # 15-question benchmark runner
+├── run_tests.py               # Unit test suite runner (9 tests)
+│
+├── src/
+│   ├── chunker.py             # Sentence-boundary chunker → [S<id>:<chunk>] tags
+│   ├── embeddings.py          # TF-IDF vectorizer + BM25 + RRF hybrid retrieval
+│   ├── agent.py               # LLM orchestrator + auto-fallback + repair pass
+│   └── web_search.py          # Live web search + Trafilatura + [W...] tagging
+│
+├── tests/
+│   └── test_all.py            # 9 unit tests (chunker, embeddings, verifier, web)
+│
+├── sample_sources/            # 10 source documents (closed corpus)
 │   ├── doc1_company_q3_report.md
 │   ├── doc2_market_analysis.md
 │   ├── doc3_sustainability_policy.md
@@ -80,84 +134,131 @@ research-agent/
 │   ├── doc8_quarterly_audit_notes.md
 │   ├── doc9_disaster_recovery_plan.md
 │   └── doc10_competitor_landscape.md
-├── src/                       # Core engine modules
-│   ├── agent.py               # LLM execution, system prompt, and repair pass logic
-│   ├── chunker.py             # Sentence-boundary chunker (300-500 words)
-│   ├── embeddings.py          # Vector embedder & BM25Okapi Hybrid RRF retrieval
-│   └── web_search.py          # Live web search, Trafilatura extraction & JSONL logger
-├── config.py                  # Dual system prompt, repair template, and .env loader
-├── ingest.py                  # Document ingestion & index generator CLI
-├── ask.py                     # Research query CLI with --retrieval & --source=corpus|web|both flags
-├── verify.py                  # Step-6 dual regex citation post-verifier
-├── test_hybrid.py             # A/B retrieval benchmark test script
-├── test_web_search.py         # Live web search unit test script
-├── run_eval.py                # 15-question evaluation suite runner
-├── app.py                     # Interactive Streamlit Web Application
-├── web_fetch_log.jsonl        # Live web fetch audit log
-├── questions.json             # Evaluation benchmark test set (15 questions)
-├── eval_results.json          # Output evaluation transcript & metrics
-├── submission_notes.md        # Technical approach report & trade-off notes
-├── requirements.txt           # Pinned python dependencies
-└── README.md                  # Project documentation
+│
+├── index.json                 # Serialized chunks + embedding vectors
+├── vectorizer.pkl             # Cached TF-IDF vectorizer
+├── bm25.pkl                   # Cached BM25Okapi index
+├── web_fetch_log.jsonl        # Audit log of all web URL fetches
+├── questions.json             # 15 evaluation benchmark questions
+├── eval_results.json          # Evaluation transcript & metrics
+├── requirements.txt           # 12 pinned dependencies
+└── .env                       # API keys (GROQ_API_KEY, TAVILY_API_KEY, SERPER_API_KEY)
 ```
 
 ---
 
-## 🚀 Quick Start Guide
+## Quick Start
 
-### 1. Installation & Setup
+### 1. Install
+
 ```bash
 git clone https://github.com/Zahid-coder-17/research-agent.git
 cd research-agent
 pip install -r requirements.txt
 ```
 
-Create `.env` file:
+### 2. Configure API Keys
+
+Create a `.env` file in the project root:
+
 ```env
 GROQ_API_KEY=your_groq_api_key_here
-TAVILY_API_KEY=your_tavily_api_key_here  # Optional for Web Search
-SERPER_API_KEY=your_serper_api_key_here  # Optional for Web Search
+TAVILY_API_KEY=your_tavily_api_key_here    # Optional — for web search
+SERPER_API_KEY=your_serper_api_key_here    # Optional — for web search
 ```
 
-### 2. Ingest Source Corpus (10 Documents)
+> **Note:** Web search works without Tavily/Serper keys using DuckDuckGo + Wikipedia fallback. Groq API key is required for LLM generation.
+
+### 3. Ingest Source Corpus
+
 ```bash
 python ingest.py sample_sources/*
 ```
 
-### 3. Query Agent via CLI (Corpus, Web, or Both)
+### 4. Query the Agent
+
 ```bash
-# Closed Corpus Only
-python ask.py "What post-quantum cryptography algorithms will Apex adopt by Q2 2026?" --source=corpus
+# Closed corpus only (default)
+python ask.py "What post-quantum cryptography algorithms will Apex adopt?" --source=corpus
 
-# Live Web Search Only
-python ask.py "What is the latest quantum computing milestone announced by IBM in 2026?" --source=web
+# Live web search only
+python ask.py "What is the latest quantum computing breakthrough?" --source=web
 
-# Both Corpus & Web Combined
-python ask.py "Compare Apex Q3 revenue with current AWS Q3 market results" --source=both
+# Both corpus + web combined
+python ask.py "Compare Apex Q3 revenue with industry benchmarks" --source=both
+
+# Switch retrieval mode
+python ask.py "What encryption does Apex use?" --retrieval=bm25
 ```
 
-### 4. Run Comprehensive Unit Test Suite
+### 5. Run Unit Tests
+
 ```bash
 python run_tests.py
 ```
 
-### 5. Run Live Web Search Unit Test
-```bash
-python test_web_search.py
-```
+### 6. Run 15-Question Evaluation Benchmark
 
-### 6. Run 15-Question Evaluation Suite
 ```bash
 python run_eval.py
 ```
 
-### 7. Launch Visual Web UI
+### 7. Launch Streamlit Web UI
+
 ```bash
 streamlit run app.py
 ```
 
 ---
 
-## 📜 License
+## Example Output
+
+```
+=======================================================
+ QUESTION:       What is quantum computing?
+ RETRIEVAL MODE: HYBRID
+ SOURCE MODE:    WEB
+=======================================================
+
+Quantum computing is a type of computing that represents and processes
+information using quantum states, exploiting phenomena such as superposition,
+interference, and entanglement [W1:00]. This allows quantum computers to
+complete some calculations exponentially faster than classical computers [W1:00].
+The basic unit of information is the qubit, which can exist in a quantum
+superposition [W1:04].
+
+Confidence: [Fully supported]
+Sources used:
+- [W1:00] Quantum computing - Wikipedia
+- [W1:03] Quantum computing - Wikipedia
+- [W1:04] Quantum computing - Wikipedia
+
+-------------------------------------------------------
+ [POST-PROCESS VERIFICATION SUMMARY]
+ Status:              VERIFIED
+ Source Mode:         WEB
+ Citation Density:    100.0%
+ Marker Drop Rate:    0.0%
+ Repair Pass Applied: True
+-------------------------------------------------------
+```
+
+---
+
+## Design Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| **RRF over linear combination** | Rank-based fusion avoids calibration between cosine similarity (0-1) and BM25 (unbounded) |
+| **k=60 RRF constant** | Standard from Cormack et al. — balances top-heavy weighting vs. long-tail |
+| **Separate [S] vs [W] prefixes** | Enables audit of which claims came from trusted corpus vs. live web |
+| **Trafilatura extraction** | Handles boilerplate removal + readability in one call, unlike raw BeautifulSoup |
+| **Wikipedia API fallback** | DuckDuckGo rate-limits aggressively — Wikipedia has no key requirement |
+| **Repair pass with density comparison** | Only keeps repaired output if strictly better — prevents regression |
+| **Sentence-boundary chunking** | Preserves semantic coherence within chunks — avoids mid-sentence splits |
+
+---
+
+## License
 
 This project is licensed under the [MIT License](LICENSE).
