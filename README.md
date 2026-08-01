@@ -88,17 +88,19 @@ flowchart TD
 
 ### Web Search API Cascade
 
-When `--source=web` or `--source=both` is used:
+When `--source=web` or `--source=both` is used, the pipeline cascades through available search APIs:
 
 ```
-TAVILY_API_KEY set? → Tavily Search API
+TAVILY_API_KEY set? ──→ Tavily Search API (primary, recommended)
         ↓ No
-SERPER_API_KEY set? → Serper Google Search API
+SERPER_API_KEY set? ──→ Serper Google Search API (backup)
         ↓ No
-DuckDuckGo DDGS (free, no key)
+DuckDuckGo DDGS (free, no key needed)
         ↓ Rate Limited?
-Wikipedia Search API (automatic fallback, no key)
+Wikipedia Search API (automatic last-resort fallback, no key needed)
 ```
+
+> **Recommended**: Set `TAVILY_API_KEY` in your `.env` for the best results. Tavily returns high-quality, real-time web sources with full page content. Free tier provides 1,000 searches/month at [tavily.com](https://tavily.com).
 
 ---
 
