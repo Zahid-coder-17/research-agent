@@ -108,6 +108,31 @@ st.markdown("""
         border-bottom-color: #58a6ff !important;
     }
 
+    /* Selectbox & Dropdown Popover Options */
+    div[data-baseweb="select"] > div {
+        background-color: #21262d !important;
+        border-color: #30363d !important;
+        color: #ffffff !important;
+    }
+    div[data-baseweb="select"] * {
+        color: #ffffff !important;
+    }
+    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {
+        background-color: #161b22 !important;
+        border: 1px solid #30363d !important;
+    }
+    li[role="option"], div[role="option"], ul[role="listbox"] li {
+        background-color: #161b22 !important;
+        color: #ffffff !important;
+    }
+    li[role="option"]:hover, div[role="option"]:hover, li[aria-selected="true"] {
+        background-color: #1f6feb !important;
+        color: #ffffff !important;
+    }
+    li[role="option"] *, div[role="option"] * {
+        color: #ffffff !important;
+    }
+
     /* Custom Citation Badges */
     .citation-badge {
         background-color: #1f6feb !important;
