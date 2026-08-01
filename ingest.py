@@ -59,10 +59,11 @@ def ingest_sources(file_patterns: list):
         print("No chunks were generated.")
         return
 
-    print(f"\nComputing embeddings for {len(all_chunks)} total chunks...")
+    print(f"\nBuilding BM25 index & computing vector embeddings for {len(all_chunks)} total chunks...")
     embedder = EmbeddingEngine()
     chunk_texts = [c["chunk_text"] for c in all_chunks]
     embeddings_matrix = embedder.embed_texts(chunk_texts, save_vectorizer=True)
+    embedder.build_bm25_index(all_chunks, save_bm25=True)
 
     # Save to index.json
     index_data = {

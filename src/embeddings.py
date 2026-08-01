@@ -152,3 +152,101 @@ class EmbeddingEngine:
         for idx in top_indices:
             results.append((chunks[idx], float(scores[idx])))
         return results
+
+    def build_bm25_index(self, chunks: List[Dict[str, Any]], save_bm25: bool = True):
+        """Builds BM25Okapi index over whitespace + lowercase tokenized chunks."""
+        try:
+            from rank_bm25 import BM25Okapi
+            tokenized_corpus = [c.get("chunk_text", "").lower().split() for c in chunks]
+            # Handle empty/short documents gracefully
+            if not tokenized_corpus or all(len(doc) == 0 for doc in tokenized_corpus):
+                self.bm25_index = None
+                return
+            self.bm25_index = BM25Okapi(tokenized_corpus)
+            if save_bm25:
+                bm25_path = "bm25.pkl"
+                with open(bm25_path, "wb") as f:
+                    pickle.dump(self.bm25_index, f)
+        except Exception as e:
+            logger.warning(f"Could not build BM25 index: {e}")
+            self.bm25_index = None
+
+    def bm25_retrieve(self, query: str, chunks: List[Dict[str, Any]], top_k: int = 5) -> List[Tuple[Dict[str, Any], float]]:
+        """Keyword search using cached BM25Okapi index."""
+        if not chunks:
+            return []
+
+        # Load BM25 index if not in memory
+        if getattr(self, "bm25_index", None) is None:
+            bm25_path = "bm25.pkl"
+            if os.path.exists(bm25_path):
+                try:
+                    with open(bm25_path, "rb") as f:
+                        self.bm25_index = pickle.load(f)
+                except Exception as e:
+                    logger.warning(f"Could not load bm25.pkl: {e}")
+                    self.build_bm25_index(chunks, save_bm25=False)
+            else:
+                self.build_bm25_index(chunks, save_bm25=False)
+
+        if getattr(self, "bm25_index", None) is None:
+            return []
+
+        tokenized_query = query.lower().split()
+        if not tokenized_query:
+            return []
+
+        scores = self.bm25_index.get_scores(tokenized_query)
+        top_indices = np.argsort(scores)[::-1][:top_k]
+        
+        results = []
+        for idx in top_indices:
+            results.append((chunks[idx], float(scores[idx])))
+        return results
+
+    def hybrid_retrieve(
+        self, 
+        query: str, 
+        chunks: List[Dict[str, Any]], 
+        chunk_vectors: np.ndarray, 
+        top_k: int = 8, 
+        rrf_k: int = 60
+    ) -> List[Tuple[Dict[str, Any], float]]:
+        """
+        Hybrid Retrieval merging Dense Embedding Search and BM25 Keyword Search
+        via Reciprocal Rank Fusion (RRF):
+        score(chunk) = sum(1 / (rrf_k + rank_in_list))
+        """
+        if not chunks:
+            return []
+
+        fetch_k = max(top_k * 2, len(chunks))
+
+        # 1. Dense retrieval candidates
+        dense_results = self.retrieve_top_k(query, chunks, chunk_vectors, top_k=fetch_k)
+
+        # 2. BM25 keyword retrieval candidates
+        bm25_results = self.bm25_retrieve(query, chunks, top_k=fetch_k)
+
+        # Map chunk tags to chunks and calculate RRF scores
+        rrf_scores: Dict[str, float] = {}
+        chunk_map: Dict[str, Dict[str, Any]] = {}
+
+        # Process Dense Ranks (1-indexed)
+        for rank, (chunk, _) in enumerate(dense_results, start=1):
+            tag = chunk.get("tag", f"{chunk.get('doc_id')}:{chunk.get('chunk_id')}")
+            chunk_map[tag] = chunk
+            rrf_scores[tag] = rrf_scores.get(tag, 0.0) + (1.0 / (rrf_k + rank))
+
+        # Process BM25 Ranks (1-indexed)
+        for rank, (chunk, _) in enumerate(bm25_results, start=1):
+            tag = chunk.get("tag", f"{chunk.get('doc_id')}:{chunk.get('chunk_id')}")
+            chunk_map[tag] = chunk
+            rrf_scores[tag] = rrf_scores.get(tag, 0.0) + (1.0 / (rrf_k + rank))
+
+        # Sort deduplicated chunks by highest fused RRF score
+        sorted_tags = sorted(rrf_scores.keys(), key=lambda t: rrf_scores[t], reverse=True)[:top_k]
+
+        fused_results = [(chunk_map[tag], rrf_scores[tag]) for tag in sorted_tags]
+        return fused_results
+

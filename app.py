@@ -152,19 +152,23 @@ tab1, tab2, tab3 = st.tabs(["💬 Query & Research", "📊 Benchmark & Evaluatio
 with tab1:
     st.subheader("Ask a Research Question")
     
-    col_q, col_k = st.columns([4, 1])
+    col_q, col_m, col_k = st.columns([3, 1.5, 1])
     with col_q:
         user_query = st.text_input(
             "Enter question:",
             placeholder="e.g. What was Apex's Q3 Year-over-Year revenue growth rate?",
             key="user_query"
         )
+    with col_m:
+        mode_choice = st.selectbox("Retrieval Mode", ["Hybrid (RRF)", "Dense Vector", "BM25 Keyword"])
+        mode_map = {"Hybrid (RRF)": "hybrid", "Dense Vector": "dense", "BM25 Keyword": "bm25"}
+        retrieval_mode = mode_map[mode_choice]
     with col_k:
         top_k = st.slider("Top-k Chunks", min_value=2, max_value=8, value=5)
 
     if st.button("Submit Research Query", use_container_width=True) and user_query:
         with st.spinner("Retrieving top-k contexts & generating grounded answer..."):
-            result = query_agent(user_query, top_k=top_k)
+            result = query_agent(user_query, top_k=top_k, retrieval_mode=retrieval_mode)
 
         # Answer Section
         st.markdown("### Answer")
